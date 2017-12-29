@@ -4,20 +4,23 @@ var router = express.Router();
 router.route("/")
 .get((req, res, next) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', "application/json");
-  res.json({ text: "from home or index" })
+  res.json({ text: "from signup" })
+  next()
 })
 .post((req, res, next) => {
   res.statusCode = 403;
   res.end("403 Forbidden");  
+  next()
 })
 .put((req, res, next) => {
   res.statusCode = 403;
   res.end("403 Forbidden"); 
+  next()
 })
 .delete((req, res, next) => {
   res.statusCode = 403;
   res.end("403 Forbidden"); 
+  next()
 })
 
 module.exports = router;

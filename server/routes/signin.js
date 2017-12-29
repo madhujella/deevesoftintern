@@ -4,8 +4,7 @@ var router = express.Router();
 router.route("/")
 .get((req, res, next) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', "application/json");
-  res.json({ text: "from home or index" })
+  res.json({ text: "from signin" })
 })
 .post((req, res, next) => {
   res.statusCode = 403;

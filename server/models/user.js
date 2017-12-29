@@ -26,6 +26,12 @@ var userSchema = new Schema({
         minlength: 6,
         trim: true
     },
+    userType: {
+        type: String,
+        required: true,
+        trim: true,
+        
+    },
     tokens: [{
         access: {
             type: String,
