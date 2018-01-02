@@ -1,4 +1,6 @@
 var mongoose = require("mongoose");
+var validator = require("validator");
+
 var {Schema} = mongoose;
 
 var classSchema = new Schema({
@@ -6,20 +8,20 @@ var classSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: 7,
-        trim: true
+        minlength: 7
     },
     name: {
         type: String,
         required: true,
-        unique: true,
         minlength: 3,
         trim: true
     },
     date: {
         type: Date,
         required: true,
-        trim: true
+        validate: {
+            validator: validator.toDate
+        }
     },
     info: {
         type: String,
@@ -30,14 +32,12 @@ var classSchema = new Schema({
     duration: {
         type: Number,
         required: true,
-        minlength: 15,
-        trim: true
+        minlength: 15
     },
     coach: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-        minlength: 3,
-        trim: true
+        ref: "User"
     },
     whatToHave: {
         type: String,
@@ -48,8 +48,7 @@ var classSchema = new Schema({
     maxEnrolls: {
         type: Number,
         required: true,
-        minlength: 5,
-        trim: true
+        minlength: 5
     },
     invitation: {
         type: String,
@@ -59,11 +58,16 @@ var classSchema = new Schema({
     },
     reqCredits: {
         type: Number,
-        required: true,
-        trim: true
-    }
+        required: true
+    },
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 
 
+}, {
+    timestamps: true
 })
 
 var Class = mongoose.model('Class', classSchema);

@@ -1,0 +1,180 @@
+{
+	"id": "HIIT001",
+	"name": "High intensity interval training",
+	"date": "2017/12/12",
+	"info": "Get ready for one hundred percent effort through quick, intense bursts of exercise followed by recovery",
+	"duration": 30,
+	"coach": "Smith Ryan",
+	"whatToHave": "Water Bottle, Towel, Training Shoes, Training workout attire and anything else you need",
+	"maxEnrolls": 5,
+	"invitation": "https://deeve/videosetup",
+	"reqCredits": 1
+}
+
+{
+	"email": "smithryan@gmail.com",
+	"name": "Smith Ryan",
+	"password": "ryan123",
+	"userType": "coach",
+}
+
+Should have the filters to select based on the coach, program name and date
+
+Today's class with number of members enrolled and button “Start the class”
+
+ Today's class and upcoming classes and should be able to sort it by date.
+
+ Member can enroll in the class by click enroll
+
+ROUTES
+
+GET		/admin/dashboard
+GET 	/admin/allclasses
+GET 	/admin/allclasses/:coach
+GET 	/admin/allclasses/:classname
+GET 	/admin/allclasses/:date
+GET 	/admin/todayclasses
+GET 	/admin/upcomingclasses
+POST	/admin/:createclass
+PUT 	/admin/:classedit
+PUT		/admin/:credits
+
+GET 	/coach/dashboard
+GET 	/coach/todayclasses/:date
+GET 	/coach/upcomingclasses/:date
+POST 	/coach/class
+
+GET 	/member/dashboard
+GET 	/member/allclasses
+GET 	/member/allclasses/:classname
+GET 	/member/allclasses/:date
+GET 	/member/todayclasses/
+GET 	/member/upcomingclasses/
+POST 	/member/enroll
+
+ADMIN
+
+GET /dashboard
+{
+	members: number,
+	coaches: number,	
+}
+
+PUT		/admin/:member/
+{
+	credits: number
+}
+
+POST /class
+{
+	"id": "HIIT001",
+	"name": "High intensity interval training",
+	"date": "2017/12/12",
+	"info": "Get ready for one hundred percent effort through quick, intense bursts of exercise followed by recovery",
+	"duration": 30,
+	"coach": "Smith Ryan",
+	"whatToHave": "Water Bottle, Towel, Training Shoes, Training workout attire and anything else you need",
+	"maxEnrolls": 5,
+	"invitation": "https://deeve/videosetup",
+	"reqCredits": 1
+}
+
+GET /allclasses
+GET /allclasses/:coach
+GET /allclasses/:classname
+GET /allclasses/:date
+
+PUT /:classedit
+
+GET /todayclasses
+GET /upcomingclasses
+{
+	/class obj
+}
+
+COACH
+
+GET /dashboard
+{
+	today: class,
+	members: class,
+	url: class
+}
+
+GET /todayclasses/:date
+GET /upcomingclasses/:date
+{
+	/class obj
+}
+
+POST /class
+{
+	"id": "HIIT001",
+	"name": "High intensity interval training",
+	"date": "2017/12/12",
+	"info": "Get ready for one hundred percent effort through quick, intense bursts of exercise followed by recovery",
+	"duration": 30,
+	"coach": "Smith Ryan",
+	"whatToHave": "Water Bottle, Towel, Training Shoes, Training workout attire and anything else you need",
+	"maxEnrolls": 5,
+	"invitation": "https://deeve/videosetup",
+	"reqCredits": 1
+}
+
+MEMBER
+
+GET /dashboard
+{
+	today: class
+	members: in class
+	url: class
+}
+
+GET /allclasses
+GET /allclasses/:classname
+GET /allclasses/:date
+{
+	/class obj
+}
+
+POST /enroll
+{
+	enroll: t
+	credits: -1
+}
+
+GET /todayclasses/
+GET /upcomingclasses/
+{
+	/class obj
+}
+
+
+// router.route("/classes/:coach")
+// .get((req, res, next) => {
+//   User.count({userType: "coach"}, (err, count) => {
+//     if(err) console.log(err);
+//     console.log(`Members: ${count}`);
+//   })
+//   .catch((err) => { next(err) })  
+// })
+
+
+// router.route("/classes/:classname")
+// .get((req, res, next) => {
+//   User.count({userType: "coach"}, (err, count) => {
+//     if(err) console.log(err);
+//     console.log(`Members: ${count}`);
+//   })
+//   .catch((err) => { next(err) })  
+// })
+
+
+// router.route("/classes/:date")
+// .get((req, res, next) => {
+//   User.count({userType: "coach"}, (err, count) => {
+//     if(err) console.log(err);
+//     console.log(`Members: ${count}`);
+//   })
+//   .catch((err) => { next(err) })  
+// })

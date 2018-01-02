@@ -1,26 +1,55 @@
 var express = require('express');
+var db = require('../config');
+var Class = require('../models/class');
+var authVerify = require('../helpers');
+
+
 var router = express.Router();
 
-router.route("/")
+//GET all classes list
+router.route("/:user/classes")
 .get((req, res, next) => {
-  res.statusCode = 200;
-  res.json({ text: "from class create" })
-  next()
+  Class.find({})
+  .then((data) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+  }, (err) => { next(err) })
+  .catch((err) => { next(err) })
 })
+
+//POST create new class
+router.route("/create")
 .post((req, res, next) => {
-  res.statusCode = 403;
-  res.end("403 Forbidden");  
-  next()
+  Class.create(req.body)
+  .then((data) => {
+    res.statusCode = 201;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+  }, (err) => { next(err) })
+  .catch((err) => { next(err) })   
 })
+
+//PUT edit existing class
+//DELETE delete existing class
+router.route("/edit/:classid")
 .put((req, res, next) => {
-  res.statusCode = 403;
-  res.end("403 Forbidden"); 
-  next()
+  Class.findByIdAndUpdate( req.params.classid , { $set: req.body }, { new: true })
+  .then((data) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(data);
+  }, (err) => { next(err) })
+  .catch((err) => { next(err) })     
 })
 .delete((req, res, next) => {
-  res.statusCode = 403;
-  res.end("403 Forbidden"); 
-  next()
+  Class.findByIdAndRemove(req.params.classid)
+  .then((resp) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json(resp);
+  }, (err) => { next(err) })
+  .catch((err) => { next(err) })  
 })
+
 
 module.exports = router;
