@@ -1,10 +1,12 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-export const authSuccess = (authdata) => {
+export const authSuccess = (token, email, userType) => {
     return {
         type: actionTypes.LOGIN_SUCCESS,
-        authdata
+        token,
+        email,
+        userType
     };
 };
 
@@ -52,7 +54,7 @@ export const auth = (email, password) => {
         }
         axios.post(url, data).then((res) => {
             console.log(res);
-            dispatch(authSuccess(res.data));
+            dispatch(authSuccess(res.data.token, res.data.email, res.data.userType));
         }, (err) => {
             console.log(err);
             dispatch(authFailed(err));

@@ -18,10 +18,7 @@ var classSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true,
-        validate: {
-            validator: validator.toDate
-        }
+        required: true
     },
     info: {
         type: String,

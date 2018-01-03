@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Authentication.css';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import Dashboard from '../../components/Dashboard/Dashboard';
 
 class Authentication extends Component {
 

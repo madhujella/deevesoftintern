@@ -31,7 +31,7 @@ app.use('/auth', auth);
 app.use('/admin',authVerify.isLogin, admin);
 app.use('/coach',authVerify.isLogin, coach);
 app.use('/member',authVerify.isLogin, member);
-app.use('/class',authVerify.isLogin, createClass);
+app.use('/class', authVerify.isLogin, createClass);
 app.use('/schedule',authVerify.isLogin, schedule);
 
 // catch 404 and forward to error handler

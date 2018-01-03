@@ -7,7 +7,7 @@ var authVerify = require('../helpers');
 var router = express.Router();
 
 //GET all classes list
-router.route("/:user/classes")
+router.route("/classes")
 .get((req, res, next) => {
   Class.find({})
   .then((data) => {
@@ -20,6 +20,7 @@ router.route("/:user/classes")
 //POST create new class
 router.route("/create")
 .post((req, res, next) => {
+  console.log(req.body.coach)
   Class.create(req.body)
   .then((data) => {
     res.statusCode = 201;
