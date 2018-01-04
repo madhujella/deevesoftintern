@@ -13,13 +13,17 @@ class Authentication extends Component {
             name: '',
             email: '',
             password: '',
-            isSignUp: true,
+            isSignUp: false,
             selectedOption: 'coach'
         }
 
         this.authSubmit = this.authSubmit.bind(this);
         this.signUp = this.signUp.bind(this);
         this.signIn = this.signIn.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.autoLogin();
     }
 
     authSubmit(e) {
@@ -93,14 +97,13 @@ class Authentication extends Component {
         const isSigned = this.state.isSignUp ? this.signUp() : this.signIn();
         let authCheck = null;
         if(this.props.isAuthenticated) {
-            authCheck = <Redirect to='/nav' />
+            console.log(this.props.isAuthenticated)
+            authCheck = <Redirect to = '/nav' />
         }
     return (
         <div>
             { authCheck }
-            <div>
-                { isSigned }
-            </div>
+            { isSigned }
         </div>
     );
     }
@@ -117,7 +120,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAuthSignIn: (email, password) => dispatch(actions.authSignIn(email, password)),
-        onAuthSignUp: (name, email, password, userType) => dispatch(actions.authSignUp(name, email, password, userType))
+        onAuthSignUp: (name, email, password, userType) => dispatch(actions.authSignUp(name, email, password, userType)),
+        autoLogin: () => dispatch(actions.checkAuth())
     }
 }
 

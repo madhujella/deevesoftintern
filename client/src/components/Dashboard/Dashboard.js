@@ -1,12 +1,12 @@
 import React from 'react';
 import './Dashboard.css';
-import Authentication from '../../containers/Authentication/Authentication';
+import Sidebar from '../Sidebar/Sidebar';
 
 
 const Dashboard = (props) => {
     return (
       <div>
-        from dashbaord
+        <Sidebar />
       </div>
     );
 }

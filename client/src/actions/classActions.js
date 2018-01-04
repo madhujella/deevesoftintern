@@ -32,6 +32,8 @@ export const addCredits = (id) => {
 export const cls = (cls) => {
     return (dispatch) => {
         let url = "http://localhost:3001/class/create";
-        // axios.get()
+        axios.get(url).then((res) => {
+            
+        })
     }
 }

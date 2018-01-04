@@ -53,7 +53,7 @@ export const authSignUp = (name, email, password, userType) => {
 export const logout = () => {
     localStorage.removeItem("auth");
     return dispatch => {
-        dispatch(logout())
+        dispatch(authLogout())
     }
 }
 
