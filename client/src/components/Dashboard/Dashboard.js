@@ -6,7 +6,7 @@ import Authentication from '../../containers/Authentication/Authentication';
 const Dashboard = (props) => {
     return (
       <div>
-        <Authentication />
+        from dashbaord
       </div>
     );
 }

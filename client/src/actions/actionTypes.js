@@ -1,5 +1,6 @@
 export const LOGIN_SUCCESS = "LOGINSUCCESS";
 export const LOGIN_FAILED = "LOGINFAILED";
+export const LOGOUT = "LOGOUT";
 
 export const GET_CLASS = "GETCLASS";
 export const ADD_CLASS = "ADDCLASS";

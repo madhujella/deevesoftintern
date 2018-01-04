@@ -1,8 +1,16 @@
 export {
-    getClass,
-    addClass,
-    editClass,
     authSuccess,
     authFailed,
-    auth
-} from './actions';
+    authSignIn,
+    authSignUp,
+    authLogout,
+    checkAuth
+} from './authActions';
+
+export {
+    getClass,
+    addClass,
+    editClass
+} from './classActions';
+
+

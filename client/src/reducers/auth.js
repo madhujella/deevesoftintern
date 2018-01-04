@@ -2,8 +2,9 @@ import * as actionTypes from '../actions/actionTypes';
 
 var initialState = {
     email: '', 
+    name: '',
     userType: '',
-    token: '',
+    token: null,
     error: null
 }
 
@@ -12,6 +13,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.LOGIN_SUCCESS:
             return {
                 ...state,
+                error: null,
+                name: action.name,
                 token: action.token,
                 email: action.email,
                 userType: action.userType
@@ -20,6 +23,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.error,
+            }
+        case actionTypes.LOGOUT:
+            return{
+                ...state,
+                name: '',
+                token: null,
+                email: '',
+                userType: ''
             }
         default:
             return state;

@@ -8,9 +8,9 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import authReducer from './reducers/auth';
+import classReducer from './reducers/class';
 
-
-const store = createStore(combineReducers({authReducer}), applyMiddleware(thunk));
+const store = createStore(combineReducers({authReducer, classReducer}), applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>
@@ -19,4 +19,5 @@ ReactDOM.render(
         </Router>
     </Provider>, document.getElementById('root')
 );
+
 registerServiceWorker();
